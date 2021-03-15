@@ -173,13 +173,14 @@ public class MyArrayList<T extends Comparable<T>> {
         }
     }
     public void checkAndUpLoadFactory() {
-        if(size + 1 < list.length * 0.75) {
+        if(size + 1 <= list.length) {
             return;
         }
         T[] temp = (T[]) new Comparable[(int) (size * 1.5)];
-        for (int i = 0; i < size; i++) {
-            temp[i] = list[i];
-        }
+        System.arraycopy(list, 0, temp, 0, size);
+//        for (int i = 0; i < size; i++) {
+//            temp[i] = list[i];
+//        }
         list = temp;
     }
 
