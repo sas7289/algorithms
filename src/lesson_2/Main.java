@@ -9,16 +9,25 @@ public class Main {
         long begin = System.currentTimeMillis();
         mal.bubbleSort();
         System.out.println("Bubble: " + (System.currentTimeMillis() - begin));
+        //87276
+
+        mal = getRandMyArrayLIst(100000);
+        begin = System.currentTimeMillis();
+        mal.bubbleSortO();
+        System.out.println("Bubble optimal: " + (System.currentTimeMillis() - begin));
+        //70165, но один раз было больше, чем в обычной пузырьковой
 
         mal = getRandMyArrayLIst(100000);
         begin = System.currentTimeMillis();
         mal.insertionSort();
         System.out.println("InsertSort: " + (System.currentTimeMillis() - begin));
+        //24534
 
         mal = getRandMyArrayLIst(100000);
         begin = System.currentTimeMillis();
         mal.selectionSort();
         System.out.println("SelectionSort: " + (System.currentTimeMillis() - begin));
+        //16959
 
 
     }

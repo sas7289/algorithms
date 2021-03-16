@@ -173,20 +173,18 @@ public class MyArrayList<T extends Comparable<T>> {
         }
     }
     public void checkAndUpLoadFactory() {
-        if(size + 1 <= list.length) {
+        if(size + 1 < capacity) {
             return;
         }
-        T[] temp = (T[]) new Comparable[(int) (size * 1.5)];
+        capacity *= 1.5;
+        T[] temp = (T[]) new Comparable[(int) (capacity)];
         System.arraycopy(list, 0, temp, 0, size);
-//        for (int i = 0; i < size; i++) {
-//            temp[i] = list[i];
-//        }
         list = temp;
     }
 
 
     public boolean checkRange(int index) {
-        if(index > size || index < 0){
+        if(index >= capacity || index < 0){
             return false;
         }
         return true;
