@@ -15,7 +15,7 @@ public class Main {
         begin = System.currentTimeMillis();
         mal.bubbleSortO();
         System.out.println("Bubble optimal: " + (System.currentTimeMillis() - begin));
-        //70165, но один раз было больше, чем в обычной пузырьковой
+        //70165, но один раз было больше, чем в обычной пузырьковой сортировке
 
         mal = getRandMyArrayLIst(100000);
         begin = System.currentTimeMillis();
