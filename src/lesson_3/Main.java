@@ -3,6 +3,74 @@ package lesson_3;
 
 public class Main {
     public static void main(String[] args) {
+        MyDequeue<Integer> mdq = new MyDequeue<>();
+        int i = 0;
+        mdq.insertRight(i++);
+        System.out.println(mdq);
+        mdq.insertLeft(i++);
+        System.out.println(mdq);
+        mdq.insertRight(i++);
+        System.out.println(mdq);
+        mdq.insertLeft(i++);
+        System.out.println(mdq);
+        mdq.insertRight(i++);
+        System.out.println(mdq);
+        mdq.insertLeft(i++);
+        System.out.println(mdq);
+        mdq.insertRight(i++);
+        System.out.println(mdq);
+        mdq.insertLeft(i++);
+        System.out.println(mdq);
+        mdq.insertRight(i++);
+        System.out.println(mdq);
+        mdq.insertLeft(i++);
+        System.out.println(mdq);
+        mdq.insertRight(i++);
+        System.out.println(mdq);
+        mdq.insertLeft(i++);
+        System.out.println(mdq);
+        mdq.insertRight(i++);
+        System.out.println(mdq);
+        mdq.insertLeft(i++);
+        System.out.println(mdq);
+        mdq.insertRight(i++);
+        System.out.println(mdq);
+        mdq.insertLeft(i++);
+        System.out.println(mdq);
+        mdq.insertRight(i++);
+        System.out.println(mdq);
+        mdq.insertLeft(i++);
+        System.out.println(mdq);
+        mdq.insertRight(i++);
+        System.out.println(mdq);
+        mdq.insertLeft(i++);
+        System.out.println(mdq);
+        mdq.insertRight(i++);
+        System.out.println(mdq);
+        mdq.insertLeft(i++);
+        System.out.println(mdq);
+        mdq.insertRight(i++);
+        System.out.println(mdq);
+        mdq.insertLeft(i++);
+        System.out.println(mdq);
+        mdq.removeLeft();
+        System.out.println(mdq);
+        mdq.removeLeft();
+        System.out.println(mdq);
+        mdq.removeRight();
+        System.out.println(mdq);
+        mdq.removeRight();
+        System.out.println(mdq);
+        mdq.removeLeft();
+        System.out.println(mdq);
+        mdq.insertRight(i++);
+        System.out.println(mdq);
+        mdq.insertRight(i++);
+        System.out.println(mdq);
+        mdq.insertRight(i++);
+        System.out.println(mdq);
+
+
         System.out.println(stringReverse("Циклопентанпергидрофенантрен"));
     }
 
