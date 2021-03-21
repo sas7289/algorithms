@@ -7,15 +7,10 @@ public class MyQueue<T> {
     private T[] list;
     private int size;
     private int capacity;
-    private final int DEFAULT_CAPACITY = 10;
+    private static final int DEFAULT_CAPACITY = 10;
+    private static final double RATE = 1.5;
     private int begin;
     private int end;
-
-    //0 1 2 3 4
-    //b
-    //  e
-    //8
-
 
     public MyQueue(int capacity) throws IllegalArgumentException {
         if (capacity <= 0) {
@@ -26,8 +21,7 @@ public class MyQueue<T> {
     }
 
     public MyQueue() {
-        this.capacity = DEFAULT_CAPACITY;
-        list = (T[]) new Object[capacity];
+        this(DEFAULT_CAPACITY);
     }
 
     /**
@@ -39,6 +33,7 @@ public class MyQueue<T> {
     public void insert(T item) throws IllegalStateException {
         if (isFull()) {
             //реализовать расширение массива
+            reCapacity((int)(capacity * RATE));
             throw new IllegalStateException("Очередь заполнена");
         }
         size++;
@@ -76,6 +71,13 @@ public class MyQueue<T> {
 
     private int nextIndex(int index) {
         return (index + 1) % list.length;
+    }
+
+    private void reCapacity(int newCapacity) {
+        this.capacity = newCapacity;
+        T[] tempArr = (T[]) new Object[newCapacity];
+        System.arraycopy(list, 0, tempArr, 0, size);
+        list = tempArr;
     }
 
     @Override
