@@ -1,34 +1,156 @@
 package lesson_4;
 
+import java.util.LinkedList;
 import java.util.ListIterator;
 
 public class Main {
     public static void main(String[] args) {
-        MyLinkedList<String> mll = new MyLinkedList<>();
-        mll.insertFirst("one");
-        mll.insertFirst("two");
-        mll.insertFirst("three");
-        mll.insertFirst("four");
-        mll.insertFirst("five");
-        mll.insertFirst("six");
-        mll.insertFirst("seven");
 
-        System.out.println(mll);
+//        LinkedList<String> linkedList = new LinkedList<>();
+//        linkedList.addFirst("one");
+//        linkedList.addFirst("two");
+//        linkedList.addFirst("three");
+//        linkedList.addFirst("four");
+//        linkedList.addFirst("five");
+//        linkedList.addFirst("six");
+//        linkedList.addFirst("seven");
+//        ListIterator<String> listIterator = linkedList.listIterator();
+//        System.out.println("index prev: " + listIterator.previousIndex() + " index next: " + listIterator.nextIndex());
+//        listIterator.next();
+//        listIterator.next();
+//        listIterator.next();
+//        listIterator.next();
+//        listIterator.next();
+//        System.out.println("index prev: " + listIterator.previousIndex() + " index next: " + listIterator.nextIndex());
+//        System.out.println(linkedList);
+//        listIterator.previous();
+//        System.out.println("index prev: " + listIterator.previousIndex() + " index next: " + listIterator.nextIndex());
+//        System.out.println(linkedList);
+//        listIterator.remove();
+//        System.out.println("index prev: " + listIterator.previousIndex() + " index next: " + listIterator.nextIndex());
+//        System.out.println(linkedList);
+//        listIterator.previous();
+//        listIterator.remove();
+//        System.out.println("index prev: " + listIterator.previousIndex() + " index next: " + listIterator.nextIndex());
+//        System.out.println(linkedList);
+//        listIterator.next();
+//        listIterator.next();
+//        System.out.println("index prev: " + listIterator.previousIndex() + " index next: " + listIterator.nextIndex());
+//        listIterator.remove();
+//
+//        System.out.println(linkedList);
+//        System.out.println(listIterator.previous());
+//        System.out.println("index prev: " + listIterator.previousIndex() + " index next: " + listIterator.nextIndex());
+//
+//        listIterator.remove();
+//        System.out.println("index prev: " + listIterator.previousIndex() + " index next: " + listIterator.nextIndex());
+//        System.out.println(linkedList);
+
+
+
+        MyLinkedList<String> mll = new MyLinkedList<>();
+        mll.insertLast("zero");
+        mll.insertLast("one");
+        mll.insertLast("two");
+        mll.insertLast("three");
+        mll.insertLast("four");
+        mll.insertLast("five");
+        mll.insertLast("six");
+        mll.insertLast("seven");
         ListIterator<String> li = mll.listiterator();
-        li.next();
+
         System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
-        li.next();
-        System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
-        li.next();
-        System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
-        li.next();        System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
-        li.remove();        System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
         System.out.println(mll);
+
+        System.out.println(li.next());
+        System.out.println(li.next());
+        System.out.println(li.previous());
+        System.out.println(li.previous());
+//        System.out.println(li.previous());
+        System.out.println(li.next());
+        System.out.println(li.next());
+        System.out.println(li.next());
+        System.out.println(mll);
+        System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
+        li.remove();
+        System.out.println(mll);
+        System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
+        li.previous();
+        System.out.println(mll);
+        System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
+        li.remove();
+        System.out.println(mll);
+        System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
+        li.previous();
+        System.out.println(mll);
+        System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
+        li.remove();
+        System.out.println(mll);
+        System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
+        li.previous();
+        System.out.println(mll);
+        System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
+        li.remove();
+        System.out.println(mll);
+        System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
+
+        System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
+        System.out.println(mll);
+
+        System.out.println(li.next());
+        System.out.println(li.next());
+        System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
+        System.out.println(mll);
+
+        li.remove();
+        System.out.println(mll);
+        System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
         li.previous();
         System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
+        System.out.println(mll);
+        li.remove();
+        System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
+        System.out.println(mll);
+
+        System.out.println(li.next());
+        System.out.println(li.next());
+        System.out.println(li.next());
+        System.out.println(li.next());
+        System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
+        System.out.println(mll);
+
+        li.remove();
+        System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
+        System.out.println(mll);
+
+        System.out.println(mll);
+        System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
+
+        System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
+        li.remove();
+        System.out.println(mll);
+        li.remove();
+        System.out.println(mll);
+        li.remove();
+        System.out.println(mll);
+        li.remove();
+        System.out.println(mll);
+
+        System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
+        li.next();        System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
+        System.out.println(mll);
+        li.next();
+        System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
+        li.next();
+        System.out.println(mll);
+        System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
+        li.remove();
+        System.out.println(li.previous());
+        System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());
+        li.remove();
+        System.out.println(mll);
 
 //        li.remove();
-        System.out.println(mll);
 
 
         System.out.println("index prev: " + li.previousIndex() + " index next: " + li.nextIndex());

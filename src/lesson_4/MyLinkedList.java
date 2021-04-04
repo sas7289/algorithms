@@ -22,6 +22,8 @@ public class MyLinkedList<T> implements Iterable<T> {
     private class Iter implements Iterator<T> {
         int index = 0;
         Node current = new Node(null, first);
+        //Узел, который будет удалён в случае вызова remove()
+        Node toRemove;
 
         @Override
         public boolean hasNext() {
@@ -34,14 +36,13 @@ public class MyLinkedList<T> implements Iterable<T> {
                 throw new IndexOutOfBoundsException();
             }
             current = current.getNext();
+            toRemove = current;
             index++;
             return current.getValue();
         }
     }
 
     private class ListIter extends Iter implements ListIterator<T> {
-
-
         @Override
         public boolean hasPrevious() {
             return current.getPrev() != null;
@@ -49,12 +50,17 @@ public class MyLinkedList<T> implements Iterable<T> {
 
         @Override
         public T previous() {
-            if(current.getPrev() == null) {
-                throw new IndexOutOfBoundsException();
+            if (current.getNext() == first) {
+                throw new IllegalStateException();
             }
-            current = current.getPrev();
+            if(current.getPrev() == null) {
+                current = new Node(null, null, first);
+            } else {
+                current = current.getPrev();
+            }
             index--;
-            return current.value;
+            toRemove = current.getNext();
+            return current.getNext().value;
         }
 
         @Override
@@ -70,25 +76,31 @@ public class MyLinkedList<T> implements Iterable<T> {
         //удаляет элемент который прошли методом next или prev
         @Override
         public void remove() {
-            if (current.getPrev() != null && current.getNext() != null) {
-                current.getPrev().setNext(current.getNext());
-                current.getNext().setPrev(current.getPrev());
-                current = current.getNext();
+            if (toRemove == null) {
+                throw new IllegalStateException();
+            }
+
+            if (toRemove.getPrev() != null && toRemove.getNext() != null) {
+                if (current.getNext() != toRemove) {
+                    index--;
+                }
+                toRemove.getPrev().setNext(toRemove.getNext());
+                toRemove.getNext().setPrev(toRemove.getPrev());
+                current = toRemove.getPrev();
                 size--;
-            } else if (first == last) {
-                first = last = null;
-                current.setNext(null);
+            } else if (toRemove.getPrev() == first) {
+                first = first.getNext();
+                first.setPrev(null);
+                current = first;
                 size--;
-            } else if (current.getPrev() == null) {
-                current = current.getNext();
-                first = current;
-                size--;
-            } else {
-                current = current.getPrev();
-                current.setNext(null);
-                last = current;
+            } else if (toRemove.getNext() == null) {
+                last = last.getPrev();
+                last.setNext(null);
+                current = last;
+                index--;
                 size--;
             }
+            toRemove = null;
         }
         //удаляет элементу который прошли методом next или prev
         @Override
@@ -107,51 +119,6 @@ public class MyLinkedList<T> implements Iterable<T> {
             current = temp;
             index++;
             size++;
-        }
-    }
-
-    private class Node {
-        Node prev;
-        T value;
-        Node next;
-
-        public Node(Node prev, T value, Node next) {
-            this.prev = prev;
-            this.value = value;
-            this.next = next;
-        }
-
-        public Node(T value, Node next) {
-            this.value = value;
-            this.next = next;
-        }
-
-        public Node(T value) {
-            this.value = value;
-        }
-
-        public T getValue() {
-            return value;
-        }
-
-        public void setValue(T value) {
-            this.value = value;
-        }
-
-        public Node getNext() {
-            return next;
-        }
-
-        public void setNext(Node next) {
-            this.next = next;
-        }
-
-        public Node getPrev() {
-            return prev;
-        }
-
-        public void setPrev(Node prev) {
-            this.prev = prev;
         }
     }
 
@@ -306,5 +273,50 @@ public class MyLinkedList<T> implements Iterable<T> {
         }
         sb.append("]");
         return sb.toString();
+    }
+
+    public class Node {
+        Node prev;
+        T value;
+        Node next;
+
+        public Node(Node prev, T value, Node next) {
+            this.prev = prev;
+            this.value = value;
+            this.next = next;
+        }
+
+        public Node(T value, Node next) {
+            this.value = value;
+            this.next = next;
+        }
+
+        public Node(T value) {
+            this.value = value;
+        }
+
+        public T getValue() {
+            return value;
+        }
+
+        public void setValue(T value) {
+            this.value = value;
+        }
+
+        public Node getNext() {
+            return next;
+        }
+
+        public void setNext(Node next) {
+            this.next = next;
+        }
+
+        public Node getPrev() {
+            return prev;
+        }
+
+        public void setPrev(Node prev) {
+            this.prev = prev;
+        }
     }
 }
