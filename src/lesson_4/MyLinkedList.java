@@ -30,6 +30,9 @@ public class MyLinkedList<T> implements Iterable<T> {
 
         @Override
         public T next() {
+            if(current.getNext() == null) {
+                throw new IndexOutOfBoundsException();
+            }
             current = current.getNext();
             index++;
             return current.getValue();
@@ -38,6 +41,7 @@ public class MyLinkedList<T> implements Iterable<T> {
 
     private class ListIter extends Iter implements ListIterator<T> {
 
+
         @Override
         public boolean hasPrevious() {
             return current.getPrev() != null;
@@ -45,6 +49,9 @@ public class MyLinkedList<T> implements Iterable<T> {
 
         @Override
         public T previous() {
+            if(current.getPrev() == null) {
+                throw new IndexOutOfBoundsException();
+            }
             current = current.getPrev();
             index--;
             return current.value;
@@ -67,6 +74,19 @@ public class MyLinkedList<T> implements Iterable<T> {
                 current.getPrev().setNext(current.getNext());
                 current.getNext().setPrev(current.getPrev());
                 current = current.getNext();
+                size--;
+            } else if (first == last) {
+                first = last = null;
+                current.setNext(null);
+                size--;
+            } else if (current.getPrev() == null) {
+                current = current.getNext();
+                first = current;
+                size--;
+            } else {
+                current = current.getPrev();
+                current.setNext(null);
+                last = current;
                 size--;
             }
         }
