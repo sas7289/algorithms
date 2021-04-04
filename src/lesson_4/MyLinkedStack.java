@@ -21,7 +21,4 @@ public class MyLinkedStack<T> {
         return ll.size();
     }
 
-    public boolean isEmpty(){
-        return ll.isEmpty();
-    }
 }

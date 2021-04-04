@@ -1,16 +1,13 @@
 package lesson_4;
 
 import java.util.ListIterator;
-import java.util.NoSuchElementException;
 
-public class MyQueueOnList<T> {
+public class MyLinkedQueue<T> {
     MyLinkedList<T> ll;
 
-    public MyQueueOnList () {
+    public MyLinkedQueue() {
         ll = new MyLinkedList<>();
     }
-
-
 
     public void insert(T item) throws IllegalStateException {
         ll.insertFirst(item);

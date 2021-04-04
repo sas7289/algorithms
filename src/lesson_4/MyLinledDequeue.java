@@ -3,16 +3,13 @@ package lesson_4;
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
-public class MyDequeueOnList<T> {
+public class MyLinledDequeue<T> {
 
     MyLinkedList<T> mll;
 
-
-
-    public MyDequeueOnList() {
+    public MyLinledDequeue() {
         this.mll = new MyLinkedList<>();
     }
-
 
     /**
      * Метод добавления нового элемента в конец очереди
@@ -29,7 +26,6 @@ public class MyDequeueOnList<T> {
      *
      * @param item добавляемый элемент
      */
-
     public void insertFirst(T item) {
         mll.insertLast(item);
     }
@@ -55,9 +51,9 @@ public class MyDequeueOnList<T> {
      *
      * @return возвращает первый элемент очереди
      */
-    public T removeLeft() {
-        T temp = mll.getFirst();
-        mll.removeFirst();
+    public T removeFirst() {
+        T temp = mll.getLast();
+        mll.removeLast();
         return temp;
     }
 
@@ -67,17 +63,11 @@ public class MyDequeueOnList<T> {
      *
      * @return возвращает последний элемент очереди
      */
-    public T removeRight() {
-        T temp = mll.getLast();
-        mll.removeLast();
+    public T removeLast() {
+        T temp = mll.getFirst();
+        mll.removeFirst();
         return temp;
     }
-
-
-
-
-
-
 
 
     /**
@@ -88,10 +78,6 @@ public class MyDequeueOnList<T> {
     public int size() {
         return mll.size();
     }
-
-
-
-
 
 
     @Override

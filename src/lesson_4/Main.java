@@ -1,7 +1,5 @@
 package lesson_4;
 
-import java.util.ListIterator;
-
 public class Main {
     public static void main(String[] args) {
         MyLinkedList<String> mll = new MyLinkedList<>();
@@ -43,7 +41,7 @@ public class Main {
 //        System.out.println(mll);
 
 
-        MyDequeueOnList<String> mql = new MyDequeueOnList<>();
+        MyLinledDequeue<String> mql = new MyLinledDequeue<>();
         System.out.println(mql.size());
         mql.insertFirst("one");
         System.out.println(mql);
@@ -65,9 +63,9 @@ public class Main {
         System.out.println("rear: " + mql.peekRear());
         System.out.println("front: " + mql.peekFront());
         System.out.println("size: " + mql.size());
-        mql.removeRight();
+        mql.removeLast();
         System.out.println(mql);
-        mql.removeLeft();
+        mql.removeFirst();
         System.out.println(mql);
         System.out.println("front: " + mql.peekFront());
         System.out.println("size: " + mql.size());
