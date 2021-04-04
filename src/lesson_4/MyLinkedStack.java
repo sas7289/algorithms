@@ -4,15 +4,17 @@ public class MyLinkedStack<T> {
     private MyLinkedList<T> ll = new MyLinkedList<>();
 
     public void push(T item){
-
+        ll.insertFirst(item);
     }
 
     public T peek(){
-        return null;
+        return ll.getFirst();
     }
 
     public T pop(){
-        return null;
+        T temp = ll.getFirst();
+        ll.removeFirst();
+        return temp;
     }
 
     public int size(){

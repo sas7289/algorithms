@@ -67,6 +67,7 @@ public class MyLinkedList<T> implements Iterable<T> {
                 current.getPrev().setNext(current.getNext());
                 current.getNext().setPrev(current.getPrev());
                 current = current.getNext();
+                size--;
             }
         }
         //удаляет элементу который прошли методом next или prev
@@ -85,6 +86,7 @@ public class MyLinkedList<T> implements Iterable<T> {
             current.setNext(temp);
             current = temp;
             index++;
+            size++;
         }
     }
 
