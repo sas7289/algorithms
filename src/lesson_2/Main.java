@@ -9,7 +9,7 @@ public class Main {
         long begin = System.currentTimeMillis();
         mal.bubbleSort();
         System.out.println("Bubble: " + (System.currentTimeMillis() - begin));
-        //87276
+        //87275
 
         mal = getRandMyArrayLIst(100000);
         begin = System.currentTimeMillis();
