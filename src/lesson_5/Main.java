@@ -1,12 +1,60 @@
 package lesson_5;
 
+import java.util.*;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println(recPower(2, -3));
 
+        List<Thing> list = new LinkedList<>(Arrays.asList(new Thing(1,2),new Thing(2,3),
+                new Thing(5,1),new Thing(3,7),new Thing(9,11),new Thing(5,8)));
+        ListIterator<Thing> iterator = list.listIterator();
+        ArrayList<ArrayList<Thing>> startedList = new ArrayList<>();
+        ArrayList<Thing> things = fillBag(iterator, startedList, 15);
+
+        int i = 0;
+        for (Thing thing : things) {
+            System.out.printf("№%d size: %d, cost: %d\n", ++i, thing.getSize(), thing.getCost());
+        }
 
     }
 
+    //Метод поиска максимальной стоимости содержимого рюкзака
+    public static ArrayList<Thing> fillBag(ListIterator<Thing> iterator, ArrayList<ArrayList<Thing>> prevItemArr, int maxSize) {
+        if (prevItemArr.size() == 0) {
+            for (int i = 0; i < 15; i++) {
+                prevItemArr.add(new ArrayList<>(Arrays.asList(new Thing())));
+            }
+            return fillBag(iterator, prevItemArr, maxSize);
+        }
+        if (!iterator.hasNext()) {
+            return prevItemArr.get(prevItemArr.size() - 1);
+        }
+        Thing tempItem = iterator.next();
+        ArrayList<ArrayList<Thing>> currentRow = new ArrayList<>(maxSize);
+        for (int i = 0; i < maxSize; i++) {
+            if(tempItem.getSize() <= i && tempItem.getCost() > getSumOfCost(prevItemArr.get(i))) {
+                ArrayList<Thing> added = new ArrayList<>();
+                added.addAll((i - tempItem.getSize()) > 0 ? prevItemArr.get(i - tempItem.getSize()) : new ArrayList<>());
+                currentRow.add(added);
+                currentRow.get(i).add(tempItem);
+            } else {
+                currentRow.add(i, prevItemArr.get(i));
+            }
+        }
+        return fillBag(iterator, currentRow, maxSize);
+    }
+
+    //Метод находит общую стоимость вещей в списке
+    private static int getSumOfCost(ArrayList<Thing> items) {
+        int sum = 0;
+        for (Thing item : items) {
+            sum += item.getCost();
+        }
+        return sum;
+    }
+
+    //Рекурсивное возведение в степень
     public static double recPower(double a, double b) {
         if (b == 0) {
             return 1;
