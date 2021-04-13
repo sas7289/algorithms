@@ -20,6 +20,14 @@ public class Main {
     }
 
     //Метод поиска максимальной стоимости содержимого рюкзака
+    /**
+     * Метод поиска максимальной стоимости содержимого рюкзака
+     *
+     * @param iterator итератор по элементам, которые необходимо уложить в рюкзак
+     * @param prevItemArr массив с уложенными элементами до предыдущего элемента
+     * @param maxSize размер заданного рюкзака
+     * @return массив элементов с максимальной стоимостью, уложенных в заданный рюкзак
+     */
     public static ArrayList<Thing> fillBag(ListIterator<Thing> iterator, ArrayList<ArrayList<Thing>> prevItemArr, int maxSize) {
         if (prevItemArr.size() == 0) {
             for (int i = 0; i < 15; i++) {
